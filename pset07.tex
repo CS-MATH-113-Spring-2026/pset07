@@ -1,0 +1,141 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{titling}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{axiom}{Axiom}
+\newtheorem{lemma}{Lemma}
+
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{CS/MATH 113, SPRING 2025}{Pset 07: Functions and Cardinalities}{\theauthor}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+% \printanswers %Uncomment this line
+
+\title{Problem Set 07: Functions and Cardinalities}
+\author{Blingblong} % <=== replace with your student ID, e.g. xy012345
+\date{CS/MATH 113 Discrete Mathematics\\Habib University\\Spring 2025}
+
+\boxedpoints
+
+\begin{document}
+\maketitle      
+
+You may use the following result in this week's assignments:
+
+\begin{lemma}\label{lemma:1}
+    Let $X$ an $Y$ be finite sets then the cardinality of the set $Y^X$ containing all function from $X$ to $Y$ is $|Y|^{|X|}$.
+\end{lemma}
+\begin{lemma}\label{lemma:2}
+    If $X$ and $Y$ are sets then if there is an injection from $X$ to $Y$ and an injection from $Y$ to $X$ then there is a bijection between $X$ and $Y$.
+\end{lemma}
+
+\section*{Problems}
+\begin{questions}
+    \question Show that $\mathbb{N} \times (\mathbb{Q} \cap \mathbb{R})$ is countable.
+    \begin{solution}
+      % Enter your solution here.
+    \end{solution}
+
+    \question Let $I$ be the set of all decimals of form $0.d_1d_2,d_3, \dots$. Show that $I$ has the same cardinality as $I \times I$. Furthermore show that both $I$ and $I\times I$ are uncountable.
+    \begin{solution}
+      % Enter your solution here.
+    \end{solution}
+
+    \question We have seen that for finite a finite set $A$, the cardinality of its power set is $2^{|A|}$. From this we can infer that for finite sets $|A| < |P(A)|$. But is it true for infinite sets too? Let $A$ be any set, show that $|A| < |P(A)|$. 
+    
+    (Hint: Construct an injection from $A$ to $P(A)$. Then show that no surjection exists from $A$ to $P(A)$, by taking a set of elements that are not in their image under a supposed surjection and show that set has no preimage.)
+    \begin{solution}
+      % Enter your solution here.
+    \end{solution}
+
+
+    \question In this problem we will prove central result in theoretical computer science. 
+    
+    You wonder, can we write an algorithm or computer program to solve every computational problem. After wondering this for a while you reached out to your beloved RA Muzzamil Sattar. Muzzamil explained that not every computational problem can be solved by an algorithm or a computer program, that is for some computational problem no algorithm cam exist that solves it. You however are not convinced with just that. You need to prove this result. 
+
+    \begin{parts}
+      \part Lets first look at the set of all algorithms. You notice that an algorithm can be written in some ``text format'' either in your computer in some editor or on paper. But the main idea is that for every algorithm there is a ``text'' representation. Now text as we know it is formally just some \emph{string}. If I have a string variable $s$ in python I can store the entire code for Bubble-sort in $s$. Look at the listing below as an example. See how the enter Bubble-sort algorithm is just assigned as a string.  
+
+      \lstinputlisting[language=Python]{string_example.py}
+
+      So every algorithm can be written as a string. Now the next important question is what even is a string. A \emph{string} is a sequence of characters which are also called \emph{alphabets}. So if my alphabets are $\textsc{Alphabets} = \{a,b,+\}$ then some strings over $\textsc{Alphabets}$ would be: $a$, $b$, $a+b$, $a++$, $b$, $bb$, $aaa+bbb++++abababaaa$, $\varepsilon$ and so on. $\varepsilon$ is a special type of string here called the empty string this is just the string with no characters such as $s= ``''$. 
+      Let $\textsc{Alphabets}$ be all the possible characters or alphabets that can be used to write a program or an algorithm. $\textsc{Alphabets}$ would contain all the english alphabets, all the english digits, the mathematical symbols, and everything else found on your keyboard. Assume these are $n$ alphabets for some natural number $n$. 
+      
+      Now if $\textsc{AllStrings}$ is the set of all the strings that can be made from $\textsc{Alphabets}$. And if $\textsc{AllAlgorithms}$ is the set of all algorithms that can be written. Then we have that $\textsc{AllAlgorithms} \subseteq \textsc{AllStrings}$ as every algorithm is just some string. 
+
+      Now show that the set $\textsc{AllAlgorithms}$ is countable. 
+      \begin{solution}
+        % Enter your solution here.
+      \end{solution}
+
+      \part One type of problem that an algorithm solves is computing functions from natural number to natural numbers. For example we can write algorithms to compute $n!$, $2n$, $n^2$, etc. 
+      
+      Now consider the set $F_{\mathbb{N}}$ of all functions from $\mathbb{N}$ to $\mathbb{N}$. Show that $F_{\mathbb{N}}$ is uncountable. 
+      \begin{solution}
+        % Enter your solution here.
+      \end{solution}
+
+      \part Can you use part (a) and (b) to conclude that there are functions from natural number to natural numbers that cannot be computed by an algorithm? Can you argue from that there are computational problem that cannot be solved by an algorithm?
+      \begin{solution}
+        % Enter your solution here.
+      \end{solution}
+  \end{parts}
+
+    
+    
+
+
+    
+
+
+
+\end{questions}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
